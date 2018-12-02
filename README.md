@@ -30,7 +30,7 @@ Fig.2. Chebyshev-Fourier basis functions on the disk spanning a rectangular (lef
 
 - To **plot** the Lagrange functions of the interpolation scheme use **example_lagrange.m**
 
-- To **plot** the Chebyshev-Fourier basis involved in the interpolation try **navigator_nls_example.m**
+- To **plot** the Chebyshev-Fourier basis involved in the interpolation try **plot_basisfunction.m**
 
 <br><br>
 
