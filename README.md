@@ -18,6 +18,7 @@ The toolbox RDisk contains a Matlab-implementation for the computation of a spec
 <br><br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="img/basissquare.png" width="370"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="img/basistriangle.png" width="370"> <br>
+Fig.2. Chebyshev-Fourier basis functions on the disk spanning a rectangular (left) and a triangular (right) interpolation space.  
 
 
 <br><br>
