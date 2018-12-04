@@ -53,7 +53,7 @@ The analysis of the rhodonea nodes and the construction of the spectral interpol
 
 *   [1] &nbsp; Erb, W. <br>
     <i> Rhodonea curves as sampling trajectories for spectral interpolation on the unit disk </i> <br>
-    arXiv:1812.xxxxx [math.NA] (2018) 
+    arXiv:1812.00437 [math.NA] (2018) 
 
 
 License
