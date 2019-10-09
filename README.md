@@ -3,7 +3,7 @@
 Spectral interpolation on rhodonea curves
 --------------------------------------------------------------------------------
 
-Version: 0.2 (01.09.2018)
+Version: 0.3 (01.10.2019)
 
 Written by <a href="https://www.math.unipd.it/~erb/index.html"> Wolfgang Erb</a>
 
