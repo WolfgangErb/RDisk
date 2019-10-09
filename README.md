@@ -40,7 +40,7 @@ Fig.2. Chebyshev-Fourier basis functions on the disk spanning a rectangular (lef
 <br><br>
 
 <img src="img/Blackhole1112.png" width="280"> <img src="img/Blackhole2122.png" width="280"> <img src="img/Blackhole6162.png" width="280"> <br>
-Fig.3. Increasing approximation quality of the interpolation scheme black hole data (EHT collaboration et al.).
+Fig.3. Increasing approximation quality of the interpolation scheme for the black hole data (EHT collaboration et al.).
 
 <img src="img/Blackhole1112error.png" width="280"> <img src="img/Blackhole2122error.png" width="280"> <img src="img/Blackhole6162error.png" width="280"> <br>
 Fig.4. Approximation errors of the interpolants in Fig. 3. with respect to the original black hole image. 
