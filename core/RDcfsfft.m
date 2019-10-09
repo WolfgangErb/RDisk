@@ -67,7 +67,7 @@ CC = Gh.*Mask;
 CC = CC(1:2*m(1)+1,:);
 
 % Coefficients for real valued basis
-CR = [real(CC(:,1:2*m(2))),imag(CC(:,2*m(2)+1:4*m(2)))];
+CR = [real(CC(:,1:2*m(2)+1)),imag(CC(:,2*m(2)+2:4*m(2)))];
 
 if strcmp(s,'square') && (av==0)
   CR(m(1)+2:2*m(1)+1,m(2)+1) = zeros(m(1),1);

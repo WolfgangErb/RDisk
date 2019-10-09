@@ -1,11 +1,14 @@
-% Plot Lagrange basis functions for rhodonea nodes 
+% RDisk: spectral interpolation on rhodonea curves
+% Example: Plot Lagrange basis functions for rhodonea nodes 
 % (C) Wolfgang Erb 01.09.2018
-
-% Parameters 
 
 clear all
 close all
 
+% Path
+addpath(genpath('./core/'));
+
+% Parameters 
 m = [30,31];              % Parameters of spherical Lissajous curve
 N = 200;                  % Discretization for plot
 K = 12;                   % Index for Lagrange basis function
@@ -43,4 +46,4 @@ colormap(jet)
 pcolor(x,x,Z), shading interp
 set(gca,'XTick',[],'YTick',[])
 axis square
-title(['Lagrange basis function for rhodonea nodes'])
+title('Lagrange basis function for rhodonea nodes','FontName','Avantgarde','FontSize',12);

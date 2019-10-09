@@ -1,22 +1,25 @@
-% Main example for spectral interpolation
-% on the nodes of Rhodonea curves 
+% RDisk: spectral interpolation on rhodonea curves
+% Main example for spectral interpolation on rhodonea nodes
 % (C) Wolfgang Erb 01.09.2018
 
 
 clear all
 close all
 
+% Path
+addpath(genpath('./core/'));
+
 % Set parameters 
 
-m       = [10,11];      % Frequency parameter of Rhodonea curve
+m       = [10,9];      % Frequency parameter of Rhodonea curve
 
-nofun   = 8;            % Number of test function [1-8]
-parfun  = [2,2];        % Additional parameter of test function
+nofun   = 9;            % Number of test function [1-10]
+parfun  = [1,1];        % Additional parameter of test function
 
 sis     = 'square';     % Form of spectral index set: 'triangle' or 'square'
 av      = 0;            % av = 0: no averaging, av = 1 averaging on boundary
 
-N       = 500;          % Discretization for plot
+N       = 1000;          % Discretization for plot
 
 % Polar coordinates of rhodonea nodes
 tic; [rrRD, thRD] = RDpts(m);
@@ -51,8 +54,9 @@ Z(idx) = Sf;
 colormap(jet)
 pcolor(x,x,Z), shading interp
 set(gca,'XTick',[],'YTick',[])
+colorbar
 axis square
-title(['Spectral interpolation on rhodonea nodes'])
+title('Spectral interpolation on rhodonea nodes','FontName','Avantgarde','FontSize',12)
 
 figure
 colormap(copper);
@@ -60,7 +64,7 @@ surfl(X, Y, Z);
 shading interp
 hold on;
 plot3(rrRD.*cos(thRD),rrRD.*sin(thRD),f,'o','LineWidth',1,'markersize',5,'MarkerFaceColor',[0.8,0.8,0.8],'MarkerEdgeColor','k');
-title(['Spectral interpolation on rhodonea nodes'])
+title('Spectral interpolation on rhodonea nodes','FontName','Avantgarde','FontSize',12)
 hold off
               
 % Calculation of the maximal error between function and polynomial interpolation

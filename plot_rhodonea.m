@@ -1,11 +1,15 @@
+% RDisk: spectral interpolation on rhodonea curves
+% Plot: This program plots a rose or rhodonea curve and its node points 
 % (C) Wolfgang Erb 01.09.2018
-% This program plots a rose or rhodonea curve and its node points 
 
 close all
 
+% Path
+addpath(genpath('./core/'));
+
 % Parameter of rhodonea variety
 
-m = [3,4];
+m = [4,4];
 
 g = gcd(m(1),m(2));
 
@@ -42,9 +46,10 @@ plot(xRC,yRC,'o','LineWidth',2,'MarkerSize',6,...
              'MarkerEdgeColor','k','MarkerFaceColor',[65,105,225]/255);
 
 set(gca,'FontSize',16);
+axis square;
 
 xlabel('x'); ylabel('y');
-title(['Rhodonea variety $\mathcal{R}^{(\underline{\mathbf{m}})}$ and nodes $\mathbf{RD}^{(\underline{\mathbf{m}})}$, $\underline{\mathbf{m}}=(',num2str(m(1)),',',num2str(m(2)),')$'],'interpreter','latex','fontsize',16)
+title(['Rhodonea variety $\mathcal{R}^{(\underline{\mathbf{m}})}$ and nodes $\mathbf{RD}^{(\underline{\mathbf{m}})}$,$\underline{\mathbf{m}}=(',num2str(m(1)),',',num2str(m(2)),')$'],'interpreter','latex','fontsize',16)
 
 hold off
 
