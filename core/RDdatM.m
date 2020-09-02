@@ -18,6 +18,7 @@ function G = RDdatM(m,f)
 findM = find(mod(M1+M2+1,2));
 
 % Generate part of data Matrix related to the index set I^{(m)}
+% The function values for the center indices i_1 = m_1 are added already here
 G_Im = zeros((m(1)+1)*4*m(2),1);
 G_Im(findM) = f/m(1)/m(2)/8;
 G_Im = reshape(G_Im,size(M1));
