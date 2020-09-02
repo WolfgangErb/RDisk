@@ -1,6 +1,8 @@
 function [CC,CR] = RDcfsfft(m,G,s,av)
 
 % (C) Wolfgang Erb 01.09.2018
+%     Version 0.4: 31.08.2020
+
 % Computes the coefficient matrix of the interpolating polynomial
 % ----------------------------------------------------------------------
 % INPUT    
@@ -24,54 +26,73 @@ Gh = fft2(G);
 
 if strcmp(s,'triangle') && (av==0)
 
-Mask = 2*(double(M1*m(2)+M2*m(1)<2*m(1)*m(2)) + double(M1*m(2)+(4*m(2)-M2)*m(1)<2*m(1)*m(2)));
-Meq  = 2*double(M1*m(2)+M2*m(1)==2*m(1)*m(2)).*double(M1 >= m(1))+ 2*double(M1*m(2)+(4*m(2)-M2)*m(1)==2*m(1)*m(2)).*double(M1 > m(1));
-Mask = (Mask + Meq).*(1-mod(M1+M2,2));
-Mask(1,1:end) = Mask(1,1:end)/2;
-Mask(1:end,1) = Mask(1:end,1)/2;
-Mask(2*m(1)+1,1) = Mask(2*m(1)+1,1)/2;
-Mask(m(1)+1,m(2)+1) = Mask(m(1)+1,m(2)+1)/2;
+%Mask for complex valued coefficients    
+Min = double(M1*m(2)+M2*m(1)<2*m(1)*m(2)) + double(M1*m(2)+(4*m(2)-M2)*m(1)<2*m(1)*m(2));
+Meq  = double(M1*m(2)+M2*m(1)==2*m(1)*m(2)).*double(M1 >= m(1))+ double(M1*m(2)+(4*m(2)-M2)*m(1)==2*m(1)*m(2)).*double(M1 > m(1));
+MaskC = 2*(Min + Meq).*(1-mod(M1+M2,2));
+MaskC(1,1:end) = MaskC(1,1:end)/2;
+MaskC(2*m(1)+1,1) = MaskC(2*m(1)+1,1)/2;
+
+%Mask for real valued coefficients 
+MaskR = 2*MaskC;
+MaskR(1:end,1) = MaskR(1:end,1)/2;
+MaskR(m(1)+1,m(2)+1) = MaskR(m(1)+1,m(2)+1)/2;
 
 elseif strcmp(s,'square') && (av==0)
     
-Mask = 2*(double(M2 < m(2)) + double((4*m(2)-M2)<m(2)));
-Meq  = 2*double(M2==m(2));
-Mask = (Mask + Meq).*(1-mod(M1+M2,2));
-Mask(1,1:end) = Mask(1,1:end)/2;
-Mask(2*m(1)+1,1:end) = Mask(2*m(1)+1,1:end)/2;
-Mask(1:end,1) = Mask(1:end,1)/2;
-Mask(m(1)+1,m(2)+1) = Mask(m(1)+1,m(2)+1)/2;
+%Mask for complex valued coefficients     
+Min = double(M2 < m(2)) + double((4*m(2)-M2)<m(2));
+Meq  = double(M2==m(2));
+MaskC = 2*(Min + Meq).*(1-mod(M1+M2,2));
+MaskC(1,1:end) = MaskC(1,1:end)/2;
+MaskC(2*m(1)+1,1:end) = MaskC(2*m(1)+1,1:end)/2;
+
+%Mask for real valued coefficients 
+MaskR = 2*MaskC;
+MaskR(1:end,1) = MaskR(1:end,1)/2;
+MaskR(m(1)+1,m(2)+1) = MaskR(m(1)+1,m(2)+1)/2;
 
 elseif strcmp(s,'triangle') && (av==1)
 
-Mask = 2*(double(M1*m(2)+M2*m(1)<2*m(1)*m(2)) + double(M1*m(2)+(4*m(2)-M2)*m(1)<2*m(1)*m(2)));
+%Mask for complex valued coefficients 
+Min = double(M1*m(2)+M2*m(1)<2*m(1)*m(2)) + double(M1*m(2)+(4*m(2)-M2)*m(1)<2*m(1)*m(2));
 Meq  = double(M1*m(2)+M2*m(1)==2*m(1)*m(2))+ double(M1*m(2)+(4*m(2)-M2)*m(1)==2*m(1)*m(2));
-Mask = (Mask + Meq).*(1-mod(M1+M2,2));
-Mask(1,1:end) = Mask(1,1:end)/2;
-Mask(1:end,1) = Mask(1:end,1)/2;
-Mask(1,2*m(2)+1) = 0;
+MaskC = (2*Min + Meq).*(1-mod(M1+M2,2));
+MaskC(1,1:end) = MaskC(1,1:end)/2;
+
+%Mask for real valued coefficients 
+MaskR = 2*MaskC;
+MaskR(1:end,1) = MaskR(1:end,1)/2;
+MaskR(1,2*m(2)+1) = 0;
 
 elseif strcmp(s,'square') && (av==1)
     
-Mask = 2*(double(M2 < m(2)) + double((4*m(2)-M2)<m(2)));
+%Mask for complex valued coefficients     
+Min = double(M2 < m(2)) + double((4*m(2)-M2)<m(2));
 Meq  = double(M2==m(2))+ double((4*m(2)-M2)==m(2));
-Mask = (Mask + Meq).*(1-mod(M1+M2,2));
-Mask(1,1:end) = Mask(1,1:end)/2;
-Mask(2*m(1)+1,1:end) = Mask(2*m(1)+1,1:end)/2;
-Mask(1:end,1) = Mask(1:end,1)/2;
+MaskC = (2*Min + Meq).*(1-mod(M1+M2,2));
+MaskC(1,1:end) = MaskC(1,1:end)/2;
+MaskC(2*m(1)+1,1:end) = MaskC(2*m(1)+1,1:end)/2;
+
+%Mask for real valued coefficients 
+MaskR = 2*MaskC;
+MaskR(1:end,1) = MaskR(1:end,1)/2;
 
 end
 
 % Coefficients for complex valued basis
-CC = Gh.*Mask;
+CC = Gh.*MaskC;
 CC = CC(1:2*m(1)+1,:);
 
 % Coefficients for real valued basis
-CR = [real(CC(:,1:2*m(2)+1)),imag(CC(:,2*m(2)+2:4*m(2)))];
+CRh = Gh.*MaskR;
+CRh = CRh(1:2*m(1)+1,:);
+
+CR = [real(CRh(:,1:2*m(2)+1)),-imag(CRh(:,2*m(2)+2:4*m(2)))];
 
 if strcmp(s,'square') && (av==0)
   CR(m(1)+2:2*m(1)+1,m(2)+1) = zeros(m(1),1);
-  CR(m(1)+2:2*m(1)+1,3*m(2)+1) = -imag(CC(m(1)+2:2*m(1)+1,m(2)+1)); 
+  CR(m(1)+2:2*m(1)+1,3*m(2)+1) = imag(CRh(m(1)+2:2*m(1)+1,m(2)+1)); 
 end
        
 return

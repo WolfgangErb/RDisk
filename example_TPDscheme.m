@@ -1,7 +1,6 @@
 % RDisk: spectral interpolation on rhodonea curves
-% Main example for spectral interpolation on rhodonea nodes
+% Example for interpolation on rectangular grid
 % (C) Wolfgang Erb 01.09.2018
-
 
 clear all
 close all
@@ -11,25 +10,22 @@ addpath(genpath('./core/'));
 
 % Set parameters 
 
-m       = [11,10];      % Frequency parameter of Rhodonea curve
+m       = [14,14];    % Frequency parameter of Rhodonea curve
 
-nofun   = 3;            % Number of test function [1-10]
-parfun  = [1,1];        % Additional parameter of test function
+nofun   = 3;          % Number of test function [1-8]
+parfun  = [1,1];      % Additional parameter of test function
 
-sis     = 'square';     % Form of spectral index set: 'triangle' or 'square'
-av      = 0;            % av = 0: no averaging, av = 1 averaging on boundary
-
-N       = 1000;         % Discretization for plot
+N       = 400;        % Discretization for plot
 
 % Polar coordinates of rhodonea nodes
-tic; [rrRD, thRD] = RDpts(m);
+tic; [rrRD, thRD] = TPDpts(m);
         
 % Extraction of function values
 f = testfundisk(rrRD,thRD,nofun,parfun); 
       
 % Computation of realvalued coefficient matrix
-G = RDdatM(m,f); 
-[~,CR] = RDcfsfft(m,G,sis,av);
+G = TPDdatM(m,f); 
+[CC,CR] = TPDcfsfft(m,G);
 
 % Calculate integral of function
 clenshaw = CR(1:4:end,1);
@@ -54,9 +50,8 @@ Z(idx) = Sf;
 colormap(jet)
 pcolor(x,x,Z), shading interp
 set(gca,'XTick',[],'YTick',[])
-colorbar
 axis square
-title('Spectral interpolation on rhodonea nodes','FontName','Avantgarde','FontSize',12)
+title('Spectral interpolation on a TPD-grid','FontName','Avantgarde','FontSize',12);
 
 figure
 colormap(copper);
@@ -64,14 +59,14 @@ surfl(X, Y, Z);
 shading interp
 hold on;
 plot3(rrRD.*cos(thRD),rrRD.*sin(thRD),f,'o','LineWidth',1,'markersize',5,'MarkerFaceColor',[0.8,0.8,0.8],'MarkerEdgeColor','k');
-title('Spectral interpolation on rhodonea nodes','FontName','Avantgarde','FontSize',12)
+title('Spectral interpolation on a TPD-grid','FontName','Avantgarde','FontSize',12);
 hold off
               
 % Calculation of the maximal error between function and polynomial interpolation
 maxError = max(abs(Sf-testfundisk(r(idx)',theta(idx)',nofun,parfun)));
 maxErrorInt = max(abs(f'-Sfint));
 
-fprintf('Main test example for interpolation on rhodonea nodes\n');
+fprintf('Main test example for interpolation on TPD-grid\n');
 fprintf('-----------------------------------------------------------------\n');
 fprintf('Elapsed time for interpolation: %10.5f \n',elapsedtime);
 fprintf('Maximal error at interpolation points: %16.14f \n',maxErrorInt);

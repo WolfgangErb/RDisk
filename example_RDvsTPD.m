@@ -3,7 +3,7 @@
 % on the rhodonea nodes (RDpts) 
 % and a tensor product interpolation (TPD scheme with a rectangular spectral index set) 
 % on a rectangular polar grid (TPDpts)
-% (C) Wolfgang Erb 01.10.2019
+% (C) Wolfgang Erb 01.09.2018
 
 
 clear all
@@ -14,7 +14,7 @@ addpath(genpath('./core/'));
 
 % Set parameters 
 
-nofun   = 10;           % Number of test function [1-9]
+nofun   = 10;            % Number of test function [1-9]
 parfun  = [1,1];        % Additional parameter of test function
 
 av      = 0;            % av = 0: no averaging, av = 1 averaging on boundary

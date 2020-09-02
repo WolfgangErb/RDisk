@@ -1,7 +1,9 @@
 function [rrRC, thRC] = RDpts(m)
 
 % (C) Wolfgang Erb 01.09.2018
-% Computes Rhodonea nodes with parameter m1, m2
+%     Version 0.4: 31.08.2020
+
+% Computes Rhodonea nodes with parameters m1 and m2
 %-------------------------------------------------------------------------
 % INPUT   
 % m=[m1,m2]    : parameters of the rhodonea curve

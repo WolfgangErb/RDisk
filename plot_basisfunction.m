@@ -2,6 +2,7 @@
 % Plot: 15 basis functions for the triangular and the 
 %       rectangular spectral index sets 
 % (C) Wolfgang Erb 01.09.2018
+%     Version 0.4: 31.08.2020
 
 close all
 
@@ -25,19 +26,19 @@ gamsq2  = [-2  0  2  -1  1  3 -2  0  2 -1  1  3 -2  0  2];
 y = zeros(length(r(idx)),N);
 ysq = zeros(length(r(idx)),N);
 D1 = T(4,r(idx)')';
-D2 = cos(theta(idx)*[0:4]);
-D3 = sin(theta(idx)*[0:4]);
+D2 = cos(theta(idx)*[-4:4]);
+D3 = sin(theta(idx)*[-4:4]);
       
 for k = 1:N
     if gam2(k) >= 0
-       y(:,k) = D1(:,gam1(k)+1).*D2(:,gam2(k)+1);
+       y(:,k) = D1(:,gam1(k)+1).*D2(:,gam2(k)+5);
     else
-       y(:,k) = D1(:,gam1(k)+1).*D3(:,1-gam2(k));
+       y(:,k) = D1(:,gam1(k)+1).*D3(:,gam2(k)+5);
     end
     if gamsq2(k) >= 0
-       ysq(:,k) = D1(:,gamsq1(k)+1).*D2(:,gamsq2(k)+1);
+       ysq(:,k) = D1(:,gamsq1(k)+1).*D2(:,gamsq2(k)+5);
     else
-       ysq(:,k) = D1(:,gamsq1(k)+1).*D3(:,1-gamsq2(k));
+       ysq(:,k) = D1(:,gamsq1(k)+1).*D3(:,gamsq2(k)+5);
     end       
        ysq(:,12) = D1(:,4).*D3(:,4);
 end

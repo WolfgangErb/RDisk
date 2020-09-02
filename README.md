@@ -3,11 +3,11 @@
 Spectral interpolation on rhodonea curves
 --------------------------------------------------------------------------------
 
-Version: 0.3 (01.10.2019)
+Version: 0.4 (31.08.2020)
 
 Written by <a href="https://www.math.unipd.it/~erb/index.html"> Wolfgang Erb</a>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="img/rhodonea23.png" width="370"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="img/rhodonea44.png" width="370"> <br>
+<img src="img/rhodonea23.png" width="340"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="img/rhodonea44.png" width="340"> <br>
 Fig.1. Illustration of two rhodonea varieties. Left: A single rhodonea curve. Right: A rhodonea variety composed of 8 circles. 
 
 Description
@@ -19,7 +19,7 @@ Rhodonea curves are classical planar curves in the disk that have the characteri
 
 <br><br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="img/basissquare.png" width="370"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="img/basistriangle.png" width="370"> <br>
+<img src="img/basissquare.png" width="340"> &nbsp;&nbsp;&nbsp;&nbsp;<img src="img/basistriangle.png" width="340"> <br>
 Fig.2. Chebyshev-Fourier basis functions on the disk spanning a rectangular (left) and a triangular (right) interpolation space.  
 
 
@@ -39,10 +39,10 @@ Fig.2. Chebyshev-Fourier basis functions on the disk spanning a rectangular (lef
 
 <br><br>
 
-<img src="img/Blackhole1112.png" width="280"> <img src="img/Blackhole2122.png" width="280"> <img src="img/Blackhole6162.png" width="280"> <br>
+<img src="img/Blackhole1112.png" width="240"> <img src="img/Blackhole2122.png" width="240"> <img src="img/Blackhole6162.png" width="240"> <br>
 Fig.3. Increasing approximation quality of the interpolation scheme for the black hole data (EHT collaboration et al.).
 
-<img src="img/Blackhole1112error.png" width="280"> <img src="img/Blackhole2122error.png" width="280"> <img src="img/Blackhole6162error.png" width="280"> <br>
+<img src="img/Blackhole1112error.png" width="240"> <img src="img/Blackhole2122error.png" width="240"> <img src="img/Blackhole6162error.png" width="240"> <br>
 Fig.4. Approximation errors of the interpolants in Fig. 3. with respect to the original black hole image. 
 
 <br><br>

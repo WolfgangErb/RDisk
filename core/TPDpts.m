@@ -1,6 +1,8 @@
 function [rrRC, thRC] = TPDpts(m)
 
 % (C) Wolfgang Erb 01.09.2018
+%     Version 0.4: 31.08.2020
+
 % Computes tensor product grid of dimension (m1+1) x 4m2
 %-------------------------------------------------------------------------
 % INPUT   
